@@ -3,9 +3,10 @@
 <% if @items.empty? %>
 	<b> No items in store</b>
 <% else %>
-<table>
+<table border = 2 >
 	<tr>
 		<th>item id</th>
+		<th>Изображение</th>
 		<th>name</th>
 		<th>price</th>
 		<th></th>
@@ -15,7 +16,8 @@
 	<% @items.each do |i| %>
 
 		<tr>
-		  <td><%= i.id %></td>
+			<td><%= i.id %></td>
+		  <td><%= image_tag i.image.url(:small) %></td>
 			<td><%= link_to i.name, item_path(i) %></td>
 			<td><%= i.price %>руб.</td>
 			<td><%= link_to  "Удалить", i, method: :delete, data: {confirm: "Точно удалить"} %></td>
