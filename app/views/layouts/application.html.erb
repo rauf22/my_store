@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyStore</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <div id= "container">
+   <div class="user_nav">
+     <% if user_signed_in? %>
+     Зарегистрирован как <%= current_user.email %>, Не Вы?
+     <%= link_to "Выход", destroy_user_session_path, method: :delete %>
+
+     <% else %>
+     <%= link_to "Регистрация", new_user_registration_path %> | 
+     <%= link_to "Вход", user_session_path %>
+     <% end %>
+
+   </div>
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+   <%= yield %>
+
+ </div>
+ </br> 
+ <%=link_to " Создать", new_item_path %> 
+</body>
+</html>
