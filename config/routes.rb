@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users, :path_names => { :sign_up => "register" }
+
 		root :to => 'items#index'
 
    resources :items do

@@ -6,5 +6,8 @@ class User < ApplicationRecord
 	has_one :cart
 	has_many :orders
 	has_many :images, as: :imageable
+	def is_admin?
+   self.admin #returns a boolean
+  end
 
 end
